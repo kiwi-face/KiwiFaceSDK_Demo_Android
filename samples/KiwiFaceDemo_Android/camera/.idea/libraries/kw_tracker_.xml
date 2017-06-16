@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="kw-tracker-">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../ui/build/intermediates/exploded-aar/kw-tracker/res" />
+      <root url="jar://$PROJECT_DIR$/../ui/build/intermediates/exploded-aar/kw-tracker/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

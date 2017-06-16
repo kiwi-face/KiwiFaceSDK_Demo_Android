@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    flatDir {
+        dirs '../libs'
+    }
+}
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.kiwi.trackerdemo"
+        minSdkVersion 18
+        targetSdkVersion 23
+        versionCode 51
+        versionName "2.1.1-2-3"
+
+    }
+
+    signingConfigs{
+        releaseConfig{
+            storeFile file("../kiwidemo.jks")
+            storePassword "kiwidemo"
+            keyAlias "kiwidemo"
+            keyPassword "kiwidemo"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.releaseConfig
+            minifyEnabled = true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+    defaultConfig {
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'x86', 'armeabi-v7a'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+
+    compile project(':ui')
+    compile(name: 'kw-filter', ext: 'aar')
+    compile(name: 'kw-tracker', ext: 'aar')
+    compile files('libs/isoparser-1.0.5.jar')
+    compile files('libs/aspectjrt.jar')
+}

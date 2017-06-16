@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+
+repositories {
+    flatDir {
+        dirs '../libs'
+    }
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    defaultConfig {
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'x86', 'armeabi-v7a'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'cn.aigestudio.downloader:Downloader:1.4.3'
+    compile 'com.qiniu:qiniu-java-sdk:7.1.+'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+//    compile project(':tracker')
+//    compile project(':effect')
+    compile(name: 'kw-filter', ext: 'aar')
+    compile(name: 'kw-tracker', ext: 'aar')
+}

@@ -1,0 +1,44 @@
+{
+  "filters": [
+    {
+      "name": "NOFILTER",
+      "dir": "NOFILTER",
+      "category": "default"
+    },
+    {
+      "name": "BLUEBERRY",
+      "dir": "BLUEBERRY",
+      "category": "default"
+    },
+    {
+      "name": "DREAMY",
+      "dir": "DREAMY",
+      "category": "default"
+    },
+    {
+      "name": "HABANA",
+      "dir": "HABANA",
+      "category": "default"
+    },
+    {
+      "name": "HAPPY",
+      "dir": "HAPPY",
+      "category": "default"
+    },
+    {
+      "name": "HARVEST",
+      "dir": "HARVEST",
+      "category": "default"
+    },
+    {
+      "name": "MISTY",
+      "dir": "MISTY",
+      "category": "default"
+    },
+    {
+      "name": "SPRING",
+      "dir": "SPRING",
+      "category": "default"
+    }
+  ]
+}

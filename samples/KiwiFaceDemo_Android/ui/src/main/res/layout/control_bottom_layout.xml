@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/btn_camera_sticker"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_weight="1.0"
+        android:src="@drawable/btn_camera_beauty"
+        android:scaleType="fitCenter"></ImageView>
+
+    <ImageView
+        android:layout_width="81dp"
+        android:layout_height="81dp"
+        android:layout_weight="1.0"
+        android:id="@+id/btn_camera_shutter"
+        android:src="@drawable/btn_camera_shutter"></ImageView>
+
+    <ImageView
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_weight="1.0"
+        android:scaleType="fitCenter"
+        android:id="@+id/btn_camera_filter"
+        android:src="@drawable/btn_camera_filter"></ImageView>
+</LinearLayout>

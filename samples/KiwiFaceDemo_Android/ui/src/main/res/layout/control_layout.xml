@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/text_fps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/btn_camera_switch"
+            android:layout_width="33dp"
+            android:layout_height="28dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/selector_rewardcamera" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/layout_toolbar"
+            layout="@layout/control_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <include
+            android:id="@+id/layout_filter"
+            layout="@layout/filter_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <com.kiwi.ui.KwEffectView
+        android:id="@+id/layout_sticker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+</LinearLayout>
