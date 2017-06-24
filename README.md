@@ -1,4 +1,4 @@
-# 开为科技开发KWFace SDK，安卓Android Demo
+# 由开为科技开发的KiwiFace SDK，安卓Android Demo
 
 Kiwi短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜、哈哈镜）/录制 - Android版                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
