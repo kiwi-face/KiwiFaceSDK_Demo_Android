@@ -24,9 +24,11 @@ Kiwi短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜、哈
 
 ## 五. 联系方式
 
-欢迎联系我们：QQ 174371791 邮箱  contact@kiwiar.com  手机 13955591813
-欢迎访问我们的官方网：http://kiwiar.com
-SDK免费试用Demo链接：http://www.kiwiar.com/demo
+- 欢迎联系我们：QQ 174371791 
+- 邮箱  contact@kiwiar.com  
+- 手机 13955591813
+- 欢迎访问我们的官方网：http://kiwiar.com
+- SDK免费试用Demo链接：http://www.kiwiar.com/demo
 
 
 
