@@ -2,7 +2,7 @@
 
 Kiwi短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜、哈哈镜）/录制 - Android版                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
-## 一：功能特点
+## 一. 功能特点
 
 录制功能                                                                                                                                                                                                                                                                         
 
@@ -22,7 +22,7 @@ Kiwi短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜、哈
 - Issues: [https://github.com/kiwi-face/KWQiniuDemo_Android/issues](https://github.com/kiwi-face/KiwiFaceSDK_Demo_Android/issues)
 
 
-## 五、联系方式
+## 五. 联系方式
 
 欢迎联系我们：QQ 174371791 邮箱  contact@kiwiar.com  手机 13955591813
 欢迎访问我们的官方网：http://kiwiar.com
