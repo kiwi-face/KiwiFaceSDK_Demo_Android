@@ -1,4 +1,4 @@
-# KWFaceSDK_Demo_Android
+# 开为科技开发KWFace SDK，安卓Android Demo
 
 Kiwi短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜、哈哈镜）/录制 - Android版                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
@@ -27,8 +27,8 @@ Kiwi短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜、哈
 - 欢迎联系我们：QQ 174371791 
 - 邮箱  contact@kiwiar.com  
 - 手机 13955591813
-- 欢迎访问我们的官方网：http://kiwiar.com
-- SDK免费试用Demo链接：http://www.kiwiar.com/demo
+- 欢迎访问开为科技的官方网：http://kiwiar.com
+- KiwiFace SDK免费试用Demo链接：http://www.kiwiar.com/demo
 
 
 
