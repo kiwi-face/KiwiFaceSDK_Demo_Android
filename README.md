@@ -15,7 +15,7 @@ KiwiFace短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜�
 
 ## 三. 开发指南
 
- [开发者手册](https://github.com/kiwi-face/KiwiFaceSDK_Demo_Android/blob/master/docs/android-dev-instruction.md)                                                                                                                                                                                                                         
+ - [开发者手册](https://github.com/kiwi-face/KiwiFaceSDK_Demo_Android/blob/master/docs/android-dev-instruction.md)                                                                                                                                                                                                                         
 
 ## 四. 反馈与建议
 
