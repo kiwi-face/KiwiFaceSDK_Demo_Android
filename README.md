@@ -19,7 +19,7 @@ KiwiFace短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜�
 
 ## 四. 反馈与建议
 
-- Issues: [https://github.com/kiwi-face/KWQiniuDemo_Android/issues](https://github.com/kiwi-face/KiwiFaceSDK_Demo_Android/issues)
+- [Issues](https://github.com/kiwi-face/KWQiniuDemo_Android/issues)
 
 
 ## 五. 联系方式
