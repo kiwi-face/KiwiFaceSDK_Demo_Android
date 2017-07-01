@@ -23,7 +23,7 @@ KiwiFace短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜�
 - [Issues](https://github.com/kiwi-face/KWQiniuDemo_Android/issues)
 
 
-## 五. 联系方式（点击下图播放）
+## 五. 联系方式
 
 - 欢迎联系我们：QQ 174371791 
 - 邮箱  contact@kiwiar.com  
@@ -38,7 +38,7 @@ KiwiFace短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜�
 ## 七、iOS github链接
 - https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS
 
-## 八、演示视频
+## 八、演示视频（点击下图播放）
 
 [![开为人脸贴纸美颜滤镜SDK演示视频](http://ogbqmomng.bkt.clouddn.com/kiwiar/img/lens/lens-photo-1.png)](http://ogbqmomng.bkt.clouddn.com/kiwiar/media/kiwiface-demo.mp4)
 
