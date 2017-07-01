@@ -29,7 +29,18 @@ KiwiFace短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜�
 - 邮箱  contact@kiwiar.com  
 - 手机 13955591813
 - 欢迎访问开为科技的官方网：http://kiwiar.com
-- KiwiFace SDK贴纸美颜滤镜免费试用Demo链接：http://www.kiwiar.com/demo
+- KiwiFace SDK贴纸美颜滤镜免费试用Demo链接：http://www.kiwiar.com/
+
+## 六、Demo App下载体验（贴纸美颜滤镜github源代码程序）
+- https://www.pgyer.com/zIVA
+
+
+## 七、iOS github链接
+- https://github.com/kiwi-face/KiwiFaceSDK_Demo_iOS
+
+## 八、演示视频
+
+[![开为人脸贴纸美颜滤镜SDK演示视频](http://ogbqmomng.bkt.clouddn.com/kiwiar/img/lens/lens-photo-1.png)](http://ogbqmomng.bkt.clouddn.com/kiwiar/media/kiwiface-demo.mp4)
 
 
 
