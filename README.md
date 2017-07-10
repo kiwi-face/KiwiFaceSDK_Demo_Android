@@ -1,9 +1,9 @@
+# 注：试用此SDK需要从网站自动生成license文件，详细情况请查阅http://www.kiwiar.com/demo
+
 # 由开为科技开发的KiwiFace SDK，安卓Android Demo
 
 KiwiFace短视频demo,支持Kiwi人脸跟踪/特效（贴纸、美颜、滤镜、哈哈镜）/录制 - Android版   
 同时支持七牛云、声网Agora、环信上的人脸贴纸美颜滤镜集成
-
-注：试用此SDK需要从网站自动生成license文件，详细情况请查阅http://www.kiwiar.com/demo
 
 ## 一. 贴纸美颜滤镜功能特点
 
