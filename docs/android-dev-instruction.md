@@ -103,6 +103,7 @@ kiwi人脸跟踪SDK，主要功能包括：
 <uses-permission android:name="android.permission.RECORD_AUDIO" />  
 <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
   ```
+6.  将申请到的KiwiFace.lic文件放在ui模块中的assets目录下
 
 #### 第四步：贴纸配置
 
