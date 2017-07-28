@@ -81,11 +81,11 @@ kiwi人脸跟踪SDK，主要功能包括：
 
 3.   将sdk文件夹中的assets文件复制到自己项目的相应文件夹下
 
-          ![](images/assets.png)
+        ![](images/assets.png)
 
 4.   将sdk文件夹中的jniLibs文件复制到自己项目的相应文件夹下
 
-         ![](images/jniLibs.png)
+        ![](images/jniLibs.png)
 
 5.   为保证sdk正常运行，程序部署时需在AndroidManisfest.xml文件中加入以下许可：
 

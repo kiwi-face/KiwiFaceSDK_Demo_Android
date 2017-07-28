@@ -12,7 +12,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.kiwi.trackerdemo"
+//     todo   applicationId "填写你申请的applicationId"
         minSdkVersion 18
         targetSdkVersion 23
         versionCode 51
@@ -20,8 +20,8 @@ android {
 
     }
 
-    signingConfigs{
-        releaseConfig{
+    signingConfigs {
+        releaseConfig {
             storeFile file("../kiwidemo.jks")
             storePassword "kiwidemo"
             keyAlias "kiwidemo"
