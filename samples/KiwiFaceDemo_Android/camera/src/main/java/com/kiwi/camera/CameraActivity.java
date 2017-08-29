@@ -76,7 +76,7 @@ public class CameraActivity extends Activity implements CameraSurfaceView.ICallA
                     @Override
                     public void onSwitchCamera() {
                         mCamera.switchCamera();
-                        kwTrackerWrapper.getKwTrackerManager().switchCamera(mCamera.mCurrentCameraId);
+                        kwTrackerWrapper.switchCamera(mCamera.mCurrentCameraId);
                     }
                 }));
 

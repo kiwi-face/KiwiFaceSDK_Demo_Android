@@ -21,6 +21,7 @@ import com.kiwi.tracker.bean.conf.StickerConfig;
 import com.kiwi.tracker.common.Config;
 import com.kiwi.tracker.utils.ZipUtils;
 import com.kiwi.ui.R;
+import com.kiwi.ui.model.StickerConfigMgr;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,7 +64,7 @@ public class StickerAdapter extends RecyclerView.Adapter<StickerAdapter.ViewHold
 
     private Map<String, String> downloadingStickers = new ConcurrentHashMap();
 
-    private int selectedPos = -1;
+//     private int selectedPos = -1;
 
     private void loadingStart(StickerConfig sticker, String url) {
         downloadingStickers.put(sticker.getName(), url);
@@ -295,9 +296,11 @@ public class StickerAdapter extends RecyclerView.Adapter<StickerAdapter.ViewHold
             if (item.isDownloaded() || position == 0) {
                 Log.i("Tracker", "switch sticker,name:" + item.getName());
 
-                notifyItemChanged(selectedPos);
-                selectedPos = position;
-                notifyItemChanged(position);
+//                  notifyItemChanged(selectedPos);
+//                    selectedPos = position;
+                StickerConfigMgr.setSelectedStickerConfig(item);
+                notifyDataSetChanged();
+//                  notifyItemChanged(position);
 
                 onStickerChangeListener.onStickerChanged(item);
                 return;
@@ -353,7 +356,8 @@ public class StickerAdapter extends RecyclerView.Adapter<StickerAdapter.ViewHold
         public void onBindView(StickerConfig item, int postion) {
 
             //选中高亮实现
-            if (selectedPos == postion) {
+            if (item.equals(StickerConfigMgr.getSelectedStickerConfig())) {
+//            if (selectedPos==postion) {
                 mView.setBackgroundResource(R.drawable.sticker_selected);
             } else {
                 mView.setBackgroundResource(R.color.transparent);
@@ -370,8 +374,6 @@ public class StickerAdapter extends RecyclerView.Adapter<StickerAdapter.ViewHold
             Glide.with(mImageView.getContext())
                     .load(thumbUrlPath)
                     .fitCenter()
-                    .placeholder(R.drawable.filter_sticker_default)
-                    .error(R.drawable.button_sticker)
                     .into(mImageView);
 
             if (item.isDownloaded()) {

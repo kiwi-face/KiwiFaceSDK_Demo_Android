@@ -15,10 +15,10 @@
 
     <style name="bottom_btn">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">30dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:button">@null</item>
-        <item name="android:drawablePadding">-20dp</item>
+        <item name="android:paddingTop">3dp</item>
     </style>
 
     <style name="right_btn">
@@ -27,6 +27,11 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+
+    <style name="beauty_text">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

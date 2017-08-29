@@ -12,7 +12,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.kiwi.tracker.bean.Filter;
+import com.blankj.utilcode.utils.ImageUtils;
+import com.kiwi.tracker.bean.KwFilter;
 import com.kiwi.ui.R;
 
 import java.io.File;
@@ -25,18 +26,11 @@ import java.util.List;
  */
 public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterHolder> {
 
-    private List<Filter> filters;
-    //    private KwFilterType[] filters;
+    private List<KwFilter> filters;
     protected Context context;
     private int selected = 0;
 
-
-//    public FilterAdapter(Context context, KwFilterType[] filters) {
-//        this.filters = filters;
-//        this.context = context;
-//    }
-
-    public FilterAdapter(Context context, List<Filter> filters) {
+    public FilterAdapter(Context context, List<KwFilter> filters) {
         this.filters = filters;
         this.context = context;
     }
@@ -91,17 +85,20 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterHold
     @Override
     public void onBindViewHolder(FilterHolder holder, final int position) {
         int color;
-        if (filters.get(position).getName().equals("NOFILTER")) {
+        KwFilter filter = filters.get(position);
+        if (filter.getName().equals("NOFILTER")) {
             color = context.getResources().getColor(R.color.filter_color_grey_light);
         } else {
             color = context.getResources().getColor(R.color.filter_color_brown_dark);
         }
 
 
-        Bitmap bgimg = getImageFromAssetsFile("filter" +
-                File.separator + filters.get(position).getName()
-                + File.separator + "thumb.png");
-        String textRes = filters.get(position).getName();
+        String path = "filter" + File.separator + filter.getName() + File.separator + "thumb.png";
+        Bitmap bgimg = getImageFromAssetsFile(path);
+        if (bgimg == null) {
+            bgimg = ImageUtils.getBitmap(context.getResources(), R.drawable.filter_thumb_original);
+        }
+        String textRes = filter.getName();
 
         onBindViewHolder(holder, position, bgimg, textRes, color);
     }
@@ -147,8 +144,7 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.FilterHold
     }
 
     public interface onFilterChangeListener {
-        //        void onFilterChanged(KwFilterType filterType);
-        void onFilterChanged(Filter filter);
+        void onFilterChanged(KwFilter filter);
     }
 
     private onFilterChangeListener onFilterChangeListener;

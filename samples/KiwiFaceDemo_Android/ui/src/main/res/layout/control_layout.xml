@@ -32,29 +32,25 @@
         android:id="@+id/layout_empty"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></RelativeLayout>
+        android:layout_weight="1"/>
 
-    <FrameLayout
+
+    <include
+        android:id="@+id/layout_toolbar"
+        layout="@layout/control_bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp" />
 
-        <include
-            android:id="@+id/layout_toolbar"
-            layout="@layout/control_bottom_layout"
-            android:layout_width="match_parent"
-            android:layout_height="100dp" />
+    <include
+        android:id="@+id/layout_filter"
+        layout="@layout/filter_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
-        <include
-            android:id="@+id/layout_filter"
-            layout="@layout/filter_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-    </FrameLayout>
-
-    <com.kiwi.ui.KwEffectView
-        android:id="@+id/layout_sticker"
+    <include
+        android:id="@+id/layout_effect"
+        layout="@layout/effect_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone" />

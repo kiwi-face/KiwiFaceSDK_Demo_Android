@@ -21,7 +21,6 @@ import com.kiwi.camera.encoder.video.TextureMovieEncoder;
 import com.kiwi.camera.encoder.video.ToH264EncoderCore;
 import com.kiwi.filter.utils.OpenGlUtils;
 import com.kiwi.filter.utils.Rotation;
-import com.kiwi.tracker.KwFilterType;
 import com.kiwi.tracker.common.Config;
 import com.kiwi.tracker.utils.FTCameraUtils;
 
@@ -33,7 +32,6 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import static com.kiwi.camera.encoder.video.TextureMovieEncoder.EncoderConfig.OUTPUT_TO_FILE;
-import static com.kiwi.tracker.KwFilterType.NONE;
 import static com.kiwi.tracker.common.Config.isDebug;
 
 /**
@@ -44,7 +42,6 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
     //        private int outputType = OUTPUT_TO_H264;
     private int outputType = OUTPUT_TO_FILE;
     private TackPictureTask tackPictureTask = new TackPictureTask();
-
 
     public CameraSurfaceView(Context context) {
         this(context, null);
@@ -87,7 +84,6 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
         isTakePhoto = takePhoto;
     }
 
-
     private SurfaceTexture.OnFrameAvailableListener onFrameAvailableListener = new SurfaceTexture.OnFrameAvailableListener() {
 
         @Override
@@ -113,7 +109,7 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         super.onSurfaceCreated(gl, config);
 
-        setFilter(NONE);
+        initFilter();
         kwTrackerWrapper.onSurfaceCreated(getContext());
 
         recordingEnabled = videoEncoder.isRecording();
@@ -131,6 +127,7 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
         adjustImageScaling();
     }
 
+    //    FTBitmapUtils ftBitmapUtils = new FTBitmapUtils();
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void onDrawFrame(GL10 gl) {
@@ -156,6 +153,11 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
         } else {
             id = kwTrackerWrapper.onDrawOESTexture(mSurfaceTextureId, mImageWidth, mImageHeight);
         }
+
+        //demo code:texture to yuv
+        kwTrackerWrapper.textureToNv21(getContext(), id, mImageWidth, mImageHeight, mCameraNV21Byte);
+        //demo debug:save yuv bitmap to /sdcard/fttracker/
+        //ftBitmapUtils.saveNv21Bitmap(mCameraNV21Byte,mImageWidth,mImageHeight);
 
         GLES20.glViewport(0, 0, mOutputWidth, mOutputHeight);
 
@@ -254,12 +256,6 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
         }
     }
 
-
-    @Override
-    public void setFilter(KwFilterType type) {
-        super.setFilter(type);
-    }
-
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         super.surfaceDestroyed(holder);
@@ -275,7 +271,9 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
         mImageWidth = previewWidth;
         mImageHeight = previewHeight;
 
+//        mCameraPreviewDegree = FTCameraUtils.getOrientation(Config.getContext(), cameraFacingId);
         mCameraPreviewDegree = FTCameraUtils.getOrientation(Config.getContext(), cameraFacingId);
+
         if (isTrackDataFromCamera()) {
             addCameraPreviewCallback(camera);
         }

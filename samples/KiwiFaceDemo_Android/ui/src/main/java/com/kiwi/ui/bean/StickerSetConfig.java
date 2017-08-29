@@ -21,6 +21,7 @@ public class StickerSetConfig {
         return stickers;
     }
 
+
     public StickerConfig findSticker(String name) {
         for(StickerConfig sticker :stickers ){
             if(name.equals(sticker.getName())){
@@ -28,5 +29,9 @@ public class StickerSetConfig {
             }
         }
         return null;
+    }
+
+    public void removeItem(StickerConfig sticker) {
+        stickers.remove(sticker);
     }
 }

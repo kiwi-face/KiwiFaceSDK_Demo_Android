@@ -1,117 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_filter_tab"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/half_transparent_black"
-    android:baselineAligned="false"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="6dp">
 
-    <com.kiwi.ui.widget.kwStickerView
-        android:id="@+id/sticker_view"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/sticker"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="6dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sticker_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <com.kiwi.ui.widget.KwDistortionView
-        android:id="@+id/distortion_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <com.kiwi.ui.widget.KwEyeAndThinView
-        android:id="@+id/eye_thin_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <com.kiwi.ui.widget.KwFaceBeautyView
-        android:id="@+id/face_beauty_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <com.kiwi.ui.widget.KwFaceBeauty2View
-        android:id="@+id/face_beauty2_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
-
-    <RadioGroup
-        android:id="@+id/bottom_view"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@android:color/black"
-        android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="5dp">
-
-        <RadioButton
-            android:id="@+id/btn_bar_sticker"
-            style="@style/bottom_btn"
-            android:drawableTop="@drawable/sticker_radio" />
-
-        <RadioButton
-            android:id="@+id/btn_bar_distortion"
-            style="@style/bottom_btn"
-            android:drawableTop="@drawable/distortion_radio" />
-
-        <RadioButton
-            android:id="@+id/btn_bar_beauty"
-            style="@style/bottom_btn"
-            android:drawableTop="@drawable/beauty_part_radio" />
-
-        <RadioButton
-            android:id="@+id/btn_bar_points"
-            style="@style/bottom_btn"
-            android:drawableTop="@drawable/beauty_bar" />
-
-        <RadioButton
-            android:id="@+id/btn_bar_beauty_second"
-            style="@style/bottom_btn"
-            android:drawableTop="@drawable/beauty_second" />
-    </RadioGroup>
-
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="56dp"-->
-    <!--android:background="@android:color/black"-->
-    <!--android:paddingBottom="5dp"-->
-    <!--android:paddingLeft="20dp"-->
-    <!--android:paddingRight="20dp"-->
-    <!--android:paddingTop="5dp">-->
-
-    <!--<ImageButton-->
-    <!--android:id="@+id/btn_bar_sticker"-->
-    <!--style="@style/filter_bottom_btn"-->
-    <!--android:src="@drawable/button_sticker_normal" />-->
-
-    <!--<ImageButton-->
-    <!--android:id="@+id/btn_bar_distortion"-->
-    <!--style="@style/filter_bottom_btn"-->
-    <!--android:src="@drawable/button_distortion_normal" />-->
-
-    <!--<ImageButton-->
-    <!--android:id="@+id/btn_bar_beauty"-->
-    <!--style="@style/filter_bottom_btn"-->
-    <!--android:src="@drawable/button_beauty_normal" />-->
-
-    <!--<ImageButton-->
-    <!--android:id="@+id/btn_bar_points"-->
-    <!--style="@style/filter_bottom_btn"-->
-    <!--android:src="@drawable/button_points_normal"-->
-    <!--android:visibility="visible" />-->
-
-    <!--<ImageButton-->
-    <!--android:id="@+id/btn_bar_beauty_second"-->
-    <!--style="@style/filter_bottom_btn"-->
-    <!--android:src="@drawable/quanjumeiyanhei"-->
-    <!--android:visibility="visible" />-->
-    <!--</LinearLayout>-->
-
+        android:scrollbars="none" />
 
 </LinearLayout>

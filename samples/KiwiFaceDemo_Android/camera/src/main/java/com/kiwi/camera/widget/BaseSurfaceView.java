@@ -8,8 +8,6 @@ import android.util.AttributeSet;
 import com.kiwi.filter.filter.base.gpuimage.GPUImageFilter;
 import com.kiwi.filter.utils.Rotation;
 import com.kiwi.filter.utils.TextureRotationUtil;
-import com.kiwi.tracker.KwFilterFactory;
-import com.kiwi.tracker.KwFilterType;
 import com.kiwi.ui.utils.FPSCounter;
 
 import java.nio.ByteBuffer;
@@ -125,17 +123,14 @@ public abstract class BaseSurfaceView extends GLSurfaceView implements GLSurface
         }
     }
 
-    public void setFilter(final KwFilterType type){
+    public void initFilter() {
         queueEvent(new Runnable() {
             @Override
             public void run() {
                 if (filter != null)
                     filter.destroy();
-                filter = null;
-                filter = KwFilterFactory.initFilters(type);
-                if(filter == null){
-                    filter = new GPUImageFilter();
-                }
+
+                filter = new GPUImageFilter();
                 if (filter != null)
                     filter.init();
                 onFilterChanged();

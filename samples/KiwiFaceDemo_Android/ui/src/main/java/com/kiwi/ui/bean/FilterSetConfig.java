@@ -1,6 +1,6 @@
 package com.kiwi.ui.bean;
 
-import com.kiwi.tracker.bean.Filter;
+import com.kiwi.tracker.bean.KwFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import java.util.List;
  */
 
 public class FilterSetConfig {
-    List<Filter> filters = new ArrayList();
-    public List<Filter> getFilters() {
+    List<KwFilter> filters = new ArrayList();
+    public List<KwFilter> getFilters() {
         return filters;
     }
 }

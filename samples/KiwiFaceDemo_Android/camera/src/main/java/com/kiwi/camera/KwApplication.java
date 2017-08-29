@@ -12,6 +12,5 @@ public class KwApplication extends Application {
     public void onCreate() {
         super.onCreate();
         LeakCanary.install(this);
-//        CrashReport.initCrashReport(getApplicationContext(), "32c53e1250", true);
     }
 }

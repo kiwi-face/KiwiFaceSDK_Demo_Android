@@ -1,7 +1,7 @@
 package com.kiwi.ui;
 
 import com.kiwi.tracker.KwFilterType;
-import com.kiwi.tracker.bean.Filter;
+import com.kiwi.tracker.bean.KwFilter;
 import com.kiwi.tracker.bean.conf.StickerConfig;
 
 /**
@@ -27,5 +27,5 @@ public interface OnViewEventListener {
 
     void onSwitchBeauty2(boolean enable);
 
-    void onSwitchFilter(Filter filter);
+    void onSwitchFilter(KwFilter filter);
 }

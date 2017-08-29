@@ -85,16 +85,17 @@
     <string name="harvest">HARVEST</string>
     <string name="open">open</string>
     <string name="cancel">cancel</string>
-    <string name="eyemagnify">eye magnifying</string>
-    <string name="faceSculpt">face sculpting</string>
-    <string name="skinPerfection">skin perfection</string>
-    <string name="skinRemoveBlemishes">remove blemishes </string>
-    <string name="skinSaturation">skin saturation</string>
-    <string name="skinTenderness">skin tenderness</string>
+    <string name="eyemagnify">Eye magnifying</string>
+    <string name="faceSculpt">Chin Slimming</string>
+    <string name="skinPerfection">Skin Whitening</string>
+    <string name="skinRemoveBlemishes">Blemish Removal</string>
+    <string name="skinSaturation">Skin Saturation</string>
+    <string name="skinTenderness">Skin Tenderness</string>
     <string name="face_beautify">face beautify</string>
-    <string name="part_beauty">part beauty</string>
-    <string name="face_beautify_second">face beautify 2</string>
+    <string name="part_beauty">Eye &#038; Chin</string>
+    <string name="face_beautify_second">Skin</string>
     <string name="take_photo">take a photo</string>
     <string name="give_gift">gift</string>
     <string name="expresss_sticker">expression</string>
+    <string name="sticker">Stickers</string>
 </resources>
