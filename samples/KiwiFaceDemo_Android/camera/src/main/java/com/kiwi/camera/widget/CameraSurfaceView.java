@@ -155,7 +155,7 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
         }
 
         //demo code:texture to yuv
-        kwTrackerWrapper.textureToNv21(getContext(), id, mImageWidth, mImageHeight, mCameraNV21Byte);
+        //kwTrackerWrapper.textureToNv21(getContext(), id, mImageWidth, mImageHeight, mCameraNV21Byte);
         //demo debug:save yuv bitmap to /sdcard/fttracker/
         //ftBitmapUtils.saveNv21Bitmap(mCameraNV21Byte,mImageWidth,mImageHeight);
 
