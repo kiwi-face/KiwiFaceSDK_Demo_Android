@@ -8,7 +8,7 @@ import android.opengl.GLES20;
 import android.os.Build;
 import android.util.Log;
 
-import com.blankj.utilcode.utils.LogUtils;
+import com.kiwi.filter.utils.TextureUtils;
 import com.kiwi.tracker.KwFaceTracker;
 import com.kiwi.tracker.KwFilterType;
 import com.kiwi.tracker.KwTrackerManager;
@@ -18,6 +18,7 @@ import com.kiwi.tracker.bean.KwTrackResult;
 import com.kiwi.tracker.bean.conf.StickerConfig;
 import com.kiwi.tracker.common.Config;
 import com.kiwi.tracker.fbo.RgbaToNv21FBO;
+import com.kiwi.tracker.fbo.RotateFBO;
 import com.kiwi.tracker.utils.Accelerometer;
 import com.kiwi.tracker.utils.GlUtil;
 import com.kiwi.ui.OnViewEventListener;
@@ -38,6 +39,9 @@ import static com.kiwi.ui.KwControlView.SKIN_TONE_SATURATION;
  */
 
 public class KwTrackerWrapper {
+    RotateFBO mRotateFBO;
+    int mFirstDir,mLastDir;
+    private int mCameraId;
     private static final String TAG = KwTrackerWrapper.class.getName();
 
     interface UIClickListener {
@@ -80,6 +84,7 @@ public class KwTrackerWrapper {
         initKiwiConfig();
 
         initWaterMark(context);
+        mCameraId = cameraFaceId;
     }
 
     private void initWaterMark(Context context) {
@@ -105,6 +110,8 @@ public class KwTrackerWrapper {
 
     public void onCreate(Activity activity) {
         mTrackerManager.onCreate(activity);
+        mRotateFBO = new RotateFBO(GLES20.GL_TEXTURE_2D);
+        mRotateFBO.onCreate(activity);
 
     }
 
@@ -127,20 +134,103 @@ public class KwTrackerWrapper {
 
     public void onSurfaceCreated(Context context) {
         mTrackerManager.onSurfaceCreated(context);
+        mRotateFBO.initialize(context);
     }
 
     public void onSurfaceChanged(int width, int height, int previewWidth, int previewHeight) {
         mTrackerManager.onSurfaceChanged(width, height, previewWidth, previewHeight);
+        mRotateFBO.updateSurfaceSize(width, height);
     }
 
     public void onSurfaceDestroyed() {
         mTrackerManager.onSurfaceDestroyed();
+        mRotateFBO.release();
     }
 
     public void switchCamera(int ordinal) {
         mTrackerManager.switchCamera(ordinal);
+        mCameraId = ordinal;
     }
 
+    public int getCameraId() {
+        return mCameraId;
+    }
+
+    /**?
+     * 由于屏幕Accelerometer获取的方向和kwsdk中tracker的方向是同一意思，所以需要重新计算
+     * @return 返回人脸朝向
+     */
+    public int computeFaceDir() {
+        int dir = Accelerometer.getDirection();
+        if(mCameraId == 1) {
+            switch (dir) {
+                case 0:
+                    dir = 1;
+                    break;
+                case 1:
+                    dir = 0;
+                    break;
+                case 2:
+                    dir = 3;
+                    break;
+                case 3:
+                    dir = 2;
+                    break;
+            }
+        } else {
+            switch (dir) {
+                case 0:
+                    dir = 3;
+                    break;
+                case 1:
+                    dir = 0;
+                    break;
+                case 2:
+                    dir = 1;
+                    break;
+                case 3:
+                    dir = 2;
+                    break;
+            }
+        }
+        return dir;
+    }
+    /**
+     *
+     * @param texId 纹理ID，此处的问题是内部TEXTURE_2D纹理
+     * @param texWidth 宽高，处理后纹理的宽高
+     * @param texHeight 宽高，处理后纹理的宽高
+     * @param dir 方向，用以表示旋转角度，值为0-3，0表示0度，1表示90，2表示180，3表示270
+     * @return 返回的是处理后的纹理ID
+     * */
+    public int onDrawTexture(int texId, int texWidth, int texHeight, int dir) {
+        return mRotateFBO.draw(texId, texWidth,texHeight,dir);
+    }
+
+    public int drawOESTexture(int oesTextureId, int texWidth, int texHeight){
+        int faceDir = computeFaceDir();
+        TextureUtils.setFaceDir(faceDir);
+        int texId = mTrackerManager.toTexture2D(oesTextureId,texWidth,texHeight);
+        boolean rotate = TextureUtils.getXYRotate();
+        int dir = TextureUtils.getDir();
+        int rotateID = texId;
+        if(dir == TextureUtils.DIR_270) {
+            mFirstDir = 1;
+            mLastDir = 3;
+        } else if(dir == TextureUtils.DIR_90) {
+            mFirstDir = 3;
+            mLastDir = 1;
+        }
+        if(rotate && dir != TextureUtils.DIR_0) {
+           rotateID = onDrawTexture(texId,texWidth,texHeight,mFirstDir);
+        }
+        int sdkID = mTrackerManager.onDrawTexture2D(rotateID,texWidth,texHeight,1);
+
+        if(rotate && dir != TextureUtils.DIR_0) {
+            sdkID = onDrawTexture(sdkID,texWidth,texHeight,mLastDir);
+        }
+        return sdkID;
+    }
     /**
      * 对纹理进行特效处理（美颜、大眼瘦脸、人脸贴纸、哈哈镜、滤镜）
      * 优点：cpu/内存 占用低，高通/三星 gpu兼容性好
