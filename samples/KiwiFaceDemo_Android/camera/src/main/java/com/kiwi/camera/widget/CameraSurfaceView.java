@@ -21,6 +21,7 @@ import com.kiwi.camera.encoder.video.TextureMovieEncoder;
 import com.kiwi.camera.encoder.video.ToH264EncoderCore;
 import com.kiwi.filter.utils.OpenGlUtils;
 import com.kiwi.filter.utils.Rotation;
+import com.kiwi.filter.utils.TextureUtils;
 import com.kiwi.tracker.common.Config;
 import com.kiwi.tracker.utils.FTCameraUtils;
 
@@ -65,7 +66,7 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
     private String audioPath;
     public String videoPath;
     private boolean isTakePhoto;
-
+    private int width,height;
     public int getmCurrentCameraId() {
         return mCurrentCameraId;
     }
@@ -122,8 +123,10 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         super.onSurfaceChanged(gl, width, height);
-        kwTrackerWrapper.onSurfaceChanged(width, height, mImageWidth, mImageHeight);
-
+        //kwTrackerWrapper.onSurfaceChanged(width, height, mImageWidth, mImageHeight);
+        kwTrackerWrapper.onSurfaceChanged(width/2, height/2, width/2, height/2);
+        this.width = width / 2 ;
+        this.height = height / 2;
         adjustImageScaling();
     }
 
@@ -149,13 +152,22 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
 
         int id;
         if (isTrackDataFromCamera()) {
-            id = kwTrackerWrapper.onDrawOESTexture(mCameraNV21Byte, mSurfaceTextureId, mImageWidth, mImageHeight, mCameraPreviewDegree);
+            TextureUtils.setIsXYRotate(true);
+            if(kwTrackerWrapper.getCameraId() == 1) {
+                TextureUtils.setDir(TextureUtils.DIR_270);
+                TextureUtils.setInverted(true);
+            } else {
+                TextureUtils.setDir(TextureUtils.DIR_90);
+                TextureUtils.setInverted(false);
+            }
+            id = kwTrackerWrapper.drawOESTexture(mSurfaceTextureId,width,height);
+            //id = kwTrackerWrapper.onDrawOESTexture(mCameraNV21Byte, mSurfaceTextureId, mImageWidth, mImageHeight, mCameraPreviewDegree);
         } else {
             id = kwTrackerWrapper.onDrawOESTexture(mSurfaceTextureId, mImageWidth, mImageHeight);
         }
 
         //demo code:texture to yuv
-        //kwTrackerWrapper.textureToNv21(getContext(), id, mImageWidth, mImageHeight, mCameraNV21Byte);
+//        kwTrackerWrapper.textureToNv21(getContext(), id, mImageWidth, mImageHeight, mCameraNV21Byte);
         //demo debug:save yuv bitmap to /sdcard/fttracker/
         //ftBitmapUtils.saveNv21Bitmap(mCameraNV21Byte,mImageWidth,mImageHeight);
 
