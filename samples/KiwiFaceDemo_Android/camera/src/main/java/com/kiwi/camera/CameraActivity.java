@@ -182,8 +182,16 @@ public class CameraActivity extends Activity implements CameraSurfaceView.ICallA
 
     private class CameraLoader {
 
-        private int mCurrentCameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+        private int mCurrentCameraId;
         private Camera mCameraInstance;
+
+        public CameraLoader(){
+            if(Camera.getNumberOfCameras() > 1){
+                mCurrentCameraId = Camera.CameraInfo.CAMERA_FACING_FRONT;
+            }else {
+                mCurrentCameraId = Camera.CameraInfo.CAMERA_FACING_BACK;
+            }
+        }
 
         public void onResume() {
             setUpCamera(mCurrentCameraId);

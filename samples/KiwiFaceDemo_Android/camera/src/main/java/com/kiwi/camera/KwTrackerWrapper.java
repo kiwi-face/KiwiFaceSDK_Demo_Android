@@ -21,6 +21,7 @@ import com.kiwi.tracker.fbo.RgbaToNv21FBO;
 import com.kiwi.tracker.fbo.RotateFBO;
 import com.kiwi.tracker.utils.Accelerometer;
 import com.kiwi.tracker.utils.GlUtil;
+import com.kiwi.tracker.utils.TrackerConstant;
 import com.kiwi.ui.OnViewEventListener;
 import com.kiwi.ui.helper.ResourceHelper;
 import com.kiwi.ui.model.SharePreferenceMgr;
@@ -106,6 +107,7 @@ public class KwTrackerWrapper {
 
         //关闭日志打印,release版本请务必关闭日志打印
         Config.isDebug = true;
+        TrackerConstant.DEBUG = true;
     }
 
     public void onCreate(Activity activity) {
@@ -162,6 +164,10 @@ public class KwTrackerWrapper {
      */
     public int computeFaceDir() {
         int dir = Accelerometer.getDirection();
+
+        //dir = dir + 1;
+        //dir = dir % 4;
+
         if(mCameraId == 1) {
             switch (dir) {
                 case 0:
