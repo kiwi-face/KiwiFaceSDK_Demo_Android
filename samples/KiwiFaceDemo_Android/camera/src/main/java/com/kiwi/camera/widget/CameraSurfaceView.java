@@ -152,14 +152,6 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
 
         int id;
         if (isTrackDataFromCamera()) {
-            TextureUtils.setIsXYRotate(true);
-            if(kwTrackerWrapper.getCameraId() == 1) {
-                TextureUtils.setDir(TextureUtils.DIR_270);
-                TextureUtils.setInverted(true);
-            } else {
-                TextureUtils.setDir(TextureUtils.DIR_90);
-                TextureUtils.setInverted(false);
-            }
             id = kwTrackerWrapper.drawOESTexture(mSurfaceTextureId,width,height);
             //id = kwTrackerWrapper.onDrawOESTexture(mCameraNV21Byte, mSurfaceTextureId, mImageWidth, mImageHeight, mCameraPreviewDegree);
         } else {
@@ -284,7 +276,9 @@ public class CameraSurfaceView extends BaseSurfaceView implements Camera.Preview
         mImageHeight = previewHeight;
 
 //        mCameraPreviewDegree = FTCameraUtils.getOrientation(Config.getContext(), cameraFacingId);
-        mCameraPreviewDegree = FTCameraUtils.getOrientation(Config.getContext(), cameraFacingId);
+        mCameraPreviewDegree = FTCameraUtils.getOrientation(Config.getContext(), 1);
+        Log.e("mCameraPreviewDegree", mCameraPreviewDegree+"");
+
 
         if (isTrackDataFromCamera()) {
             addCameraPreviewCallback(camera);

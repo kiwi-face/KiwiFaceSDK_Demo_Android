@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
+import android.hardware.Camera;
 import android.opengl.GLES20;
 import android.os.Build;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.kiwi.tracker.common.Config;
 import com.kiwi.tracker.fbo.RgbaToNv21FBO;
 import com.kiwi.tracker.fbo.RotateFBO;
 import com.kiwi.tracker.utils.Accelerometer;
+import com.kiwi.tracker.utils.FTCameraUtils;
 import com.kiwi.tracker.utils.GlUtil;
 import com.kiwi.tracker.utils.TrackerConstant;
 import com.kiwi.ui.OnViewEventListener;
@@ -53,6 +55,7 @@ public class KwTrackerWrapper {
 
     private KwTrackerSettings mTrackerSetting;
     private KwTrackerManager mTrackerManager;
+    private int mCameraPreviewDegree;
 
     public KwTrackerWrapper(final Context context, int cameraFaceId) {
 
@@ -86,11 +89,39 @@ public class KwTrackerWrapper {
 
         initWaterMark(context);
         mCameraId = cameraFaceId;
+        TextureUtils.setIsXYRotate(true);
+        setConfig(cameraFaceId);
+
+        TrackerConstant.DEBUG = true;
     }
 
     private void initWaterMark(Context context) {
         Bitmap waterMark = getBitmap(context.getResources(), R.drawable.kiwi_logo);
         mTrackerSetting.setWaterMarkSettings(true, waterMark, new RectF(0.8f, 0.94f, 0.98f, 0.995f));
+    }
+
+    private void setConfig(int cameraFaceId){
+        if(cameraFaceId == Camera.CameraInfo.CAMERA_FACING_FRONT){
+            TextureUtils.setInverted(true);
+        }else {
+            TextureUtils.setInverted(false);
+        }
+
+        int cameraDegree = FTCameraUtils.getOrientation(Config.getContext(), cameraFaceId);
+        switch (cameraDegree){
+            case 0:
+                TextureUtils.setDir(TextureUtils.DIR_0);
+                break;
+            case 90:
+                TextureUtils.setDir(TextureUtils.DIR_90);
+                break;
+            case 180:
+                TextureUtils.setDir(TextureUtils.DIR_180);
+                break;
+            case 270:
+                TextureUtils.setDir(TextureUtils.DIR_270);
+                break;
+        }
     }
 
     private void initKiwiConfig() {
@@ -152,6 +183,7 @@ public class KwTrackerWrapper {
     public void switchCamera(int ordinal) {
         mTrackerManager.switchCamera(ordinal);
         mCameraId = ordinal;
+        setConfig(ordinal);
     }
 
     public int getCameraId() {
@@ -165,8 +197,8 @@ public class KwTrackerWrapper {
     public int computeFaceDir() {
         int dir = Accelerometer.getDirection();
 
-        //dir = dir + 1;
-        //dir = dir % 4;
+//        dir = dir + 2;
+//        dir = dir % 4;
 
         if(mCameraId == 1) {
             switch (dir) {
