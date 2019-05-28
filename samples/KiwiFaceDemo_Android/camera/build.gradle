@@ -1,10 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'bugly'
-
-bugly {
-    appId = "32c53e1250"
-    appKey = "f9db509f-5ed5-41d1-b0bc-2fcabee5b29b"
-}
 
 repositories {
     flatDir {
@@ -14,7 +8,6 @@ repositories {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 15
@@ -64,8 +57,8 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-    api 'com.tencent.bugly:crashreport:2.3.1'
-    api 'com.tencent.bugly:nativecrashreport:3.0'
+    api 'com.tencent.bugly:crashreport:2.8.6.0'
+    api 'com.tencent.bugly:nativecrashreport:3.7.1'
 
     api project(':ui')
 }

@@ -52,3 +52,6 @@ freeline.py
 freeline/
 freeline_project_description.json
 
+/camera/mapping.txt
+/camera/seeds.txt
+/camera/unused.txt
